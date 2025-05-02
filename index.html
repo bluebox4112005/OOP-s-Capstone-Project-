@@ -1,0 +1,169 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Locker System</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Login/Signup Form -->
+        <div id="auth-container" class="auth-container">
+            <div class="form-container">
+                <div class="form-header">
+                    <h1>E-Locker</h1>
+                    <p>Secure Document Management System</p>
+                </div>
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="login">Login</button>
+                    <button class="tab-btn" data-tab="signup">Sign Up</button>
+                </div>
+                <form id="login-form" class="form active">
+                    <div class="input-group">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="login-userId" placeholder="User ID" required>
+                    </div>
+                    <div class="input-group">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="login-password" placeholder="Password" required>
+                    </div>
+                    <button type="submit" class="btn">Login</button>
+                </form>
+                <form id="signup-form" class="form">
+                    <div class="input-group">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="signup-userId" placeholder="User ID" required>
+                    </div>
+                    <div class="input-group">
+                        <i class="fas fa-user-circle"></i>
+                        <input type="text" id="signup-name" placeholder="Full Name" required>
+                    </div>
+                    <div class="input-group">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="signup-password" placeholder="Password" required>
+                    </div>
+                    <button type="submit" class="btn">Sign Up</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Dashboard -->
+        <div id="dashboard" class="dashboard hidden">
+            <nav class="sidebar">
+                <div class="user-profile">
+                    <img src="https://via.placeholder.com/50" alt="Profile" class="profile-img">
+                    <div class="user-info">
+                        <h3 id="user-name">User Name</h3>
+                        <p id="user-id">user123</p>
+                    </div>
+                </div>
+                <ul class="nav-links">
+                    <li class="active" data-section="documents">
+                        <i class="fas fa-file-alt"></i>
+                        <span>My Documents</span>
+                    </li>
+                    <li data-section="family-docs">
+                        <i class="fas fa-users"></i>
+                        <span>Family Documents</span>
+                    </li>
+                    <li data-section="upload">
+                        <i class="fas fa-upload"></i>
+                        <span>Upload Document</span>
+                    </li>
+                    <li data-section="family">
+                        <i class="fas fa-user-plus"></i>
+                        <span>Family Management</span>
+                    </li>
+                </ul>
+                <button id="logout-btn" class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </button>
+            </nav>
+
+            <main class="main-content">
+                <!-- Documents Section -->
+                <section id="documents" class="content-section active">
+                    <div class="section-header">
+                        <h2>My Documents</h2>
+                        <button class="btn" id="upload-doc-btn">
+                            <i class="fas fa-plus"></i> Upload Document
+                        </button>
+                    </div>
+                    <div class="documents-grid" id="my-documents">
+                        <!-- Documents will be loaded here -->
+                    </div>
+                </section>
+
+                <!-- Family Documents Section -->
+                <section id="family-docs" class="content-section">
+                    <div class="section-header">
+                        <h2>Family Documents</h2>
+                    </div>
+                    <div class="documents-grid" id="family-documents">
+                        <!-- Family documents will be loaded here -->
+                    </div>
+                </section>
+
+                <!-- Upload Section -->
+                <section id="upload" class="content-section">
+                    <div class="upload-container">
+                        <h2>Upload New Document</h2>
+                        <form id="upload-form">
+                            <div class="input-group">
+                                <label>Document Name</label>
+                                <input type="text" id="doc-name" required>
+                            </div>
+                            <div class="input-group">
+                                <label>Document Type</label>
+                                <select id="doc-type" required>
+                                    <option value="pdf">PDF</option>
+                                    <option value="doc">Word</option>
+                                    <option value="image">Image</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="input-group">
+                                <label>Content</label>
+                                <textarea id="doc-content" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="btn">Upload</button>
+                        </form>
+                    </div>
+                </section>
+
+                <!-- Family Management Section -->
+                <section id="family" class="content-section">
+                    <div class="family-management">
+                        <div class="create-family">
+                            <h2>Create Family</h2>
+                            <form id="create-family-form">
+                                <div class="input-group">
+                                    <label>Family Name</label>
+                                    <input type="text" id="family-name" required>
+                                </div>
+                                <button type="submit" class="btn">Create Family</button>
+                            </form>
+                        </div>
+                        <div class="add-member">
+                            <h2>Add Family Member</h2>
+                            <form id="add-member-form">
+                                <div class="input-group">
+                                    <label>User ID</label>
+                                    <input type="text" id="member-id" required>
+                                </div>
+                                <button type="submit" class="btn">Add Member</button>
+                            </form>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 
